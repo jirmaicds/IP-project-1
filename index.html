@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrimeCare | Hospital Operations Dashboard</title>
+  <meta name="description" content="PrimeCare Medical Center hospital operations dashboard with integrated HIS architecture diagrams based on the Information Systems Proposal.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ ICON SPRITE ============ -->
+<svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="3" r="1.6"/><circle cx="21" cy="12" r="1.6"/><circle cx="12" cy="21" r="1.6"/><circle cx="3" cy="12" r="1.6"/><path d="M12 4.6v6M19.4 12h-6M12 19.4v-6M4.6 12h6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1.03-1.56V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.6a1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9v0a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20"/><path d="M6 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="i-lab" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.2L4.6 18a2 2 0 0 0 1.7 3h11.4a2 2 0 0 0 1.7-3L14 9.2V3"/><path d="M7 15h10"/></symbol>
+  <symbol id="i-pill" viewBox="0 0 24 24"><path d="M10.5 20.5a5 5 0 0 1-7-7l7-7a5 5 0 0 1 7 7z"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l8.9 8.9 8.9-8.9a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="16" y1="3" x2="16" y2="7"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="3" y1="11" x2="21" y2="11"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="20 11 20 4 20 11"/><path d="M20 11a8 8 0 1 0-2.3 6"/><polyline points="14 4 20 4 20 10"/></symbol>
+</svg>
+
+<div class="app-shell">
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark"><svg><use href="#i-heart"/></svg></div>
+      <div class="brand-text"><strong>PrimeCare</strong><span>Medical Center</span></div>
+    </div>
+
+    <nav class="nav" aria-label="Main navigation">
+      <p class="nav-label">WORKSPACE</p>
+      <button class="nav-item active" data-view="overview"><svg><use href="#i-grid"/></svg><span>Overview</span></button>
+      <button class="nav-item" data-view="flow"><svg><use href="#i-activity"/></svg><span>Patient Flow</span><span class="nav-badge">12</span></button>
+      <button class="nav-item" data-view="systems"><svg><use href="#i-layers"/></svg><span>Information Systems</span></button>
+      <button class="nav-item" data-view="architecture"><svg><use href="#i-flow"/></svg><span>Architecture Diagram</span></button>
+      <p class="nav-label">MANAGEMENT</p>
+      <button class="nav-item" data-view="reports"><svg><use href="#i-file"/></svg><span>Reports &amp; Plans</span></button>
+      <button class="nav-item" data-view="profile"><svg><use href="#i-users"/></svg><span>Account Profile</span></button>
+      <button class="nav-item" data-view="settings"><svg><use href="#i-settings"/></svg><span>Settings</span></button>
+    </nav>
+
+    <div class="sidebar-status">
+      <div class="status-head"><span class="live-dot"></span><strong>HIS Status</strong></div>
+      <p>All 7 proposed systems connected to the centralized database.</p>
+      <div class="status-bar"><span style="width:100%"></span></div>
+      <small>Integration ready · <span id="sidebarTime">--:--</span></small>
+    </div>
+
+    <div class="sidebar-user">
+      <div class="avatar">MA</div>
+      <div><strong>Maria Alvarez</strong><small>Hospital Administrator</small></div>
+      <svg class="kebab"><use href="#i-chevron"/></svg>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Toggle navigation"><svg><use href="#i-menu"/></svg></button>
+      <div class="crumbs"><span>PrimeCare</span><svg class="crumb-arrow"><use href="#i-chevron"/></svg><strong id="crumbCurrent">Overview</strong></div>
+      <div class="top-actions">
+        <div class="date-chip"><span id="todayDate">—</span></div>
+        <div class="notif-wrap">
+          <button class="icon-btn notif" id="notifBtn" aria-label="Notifications" aria-expanded="false" aria-controls="notifDropdown"><svg><use href="#i-bell"/></svg><span class="notif-dot"></span></button>
+          <div class="notif-dropdown" id="notifDropdown" role="dialog" aria-label="Notifications">
+            <div class="notif-head"><strong>Notifications</strong><span class="pill good">4 updates</span></div>
+            <ul class="notif-list">
+              <li><span class="notif-icon teal"><svg><use href="#i-check"/></svg></span><div><strong>All 7 HIS modules synchronized</strong><p>Integrated HIS · centralized data live</p><time>Just now</time></div></li>
+              <li><span class="notif-icon blue"><svg><use href="#i-lab"/></svg></span><div><strong>Lab results published to EMR</strong><p>Laboratory · 184 results delivered today</p><time>5 minutes ago</time></div></li>
+              <li><span class="notif-icon violet"><svg><use href="#i-file"/></svg></span><div><strong>Insurance claims auto-verified</strong><p>Billing · 94% first-pass approval</p><time>20 minutes ago</time></div></li>
+              <li><span class="notif-icon teal"><svg><use href="#i-pill"/></svg></span><div><strong>Inventory levels healthy</strong><p>Pharmacy · no shortages or expired stock</p><time>1 hour ago</time></div></li>
+            </ul>
+            <a class="notif-foot" href="index.html">View all activity <svg><use href="#i-chevron"/></svg></a>
+          </div>
+        </div>
+        <div class="top-user"><div class="avatar">MA</div><div class="top-user-text"><strong>Maria Alvarez</strong><small>Administrator</small></div></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- ===== OVERVIEW VIEW ===== -->
+      <section class="view active" id="view-overview">
+        <div class="page-head">
+          <div>
+            <p class="eyebrow" id="greeting">Welcome back</p>
+            <h1>Operations Overview</h1>
+            <p class="sub">A live view of patient activity, departments, and hospital resources.</p>
+          </div>
+          <div class="head-actions">
+            <button class="btn ghost" id="refreshBtn"><svg><use href="#i-refresh"/></svg> Refresh</button>
+            <button class="btn primary" id="exportBtn"><svg><use href="#i-download"/></svg> Export report</button>
+          </div>
+        </div>
+
+        <p class="demo-note"><svg><use href="#i-check"/></svg> Post-implementation demonstration — figures show the positive outcomes described in the PrimeCare Information Systems Proposal.</p>
+
+        <div class="kpi-grid">
+          <article class="card kpi">
+            <div class="kpi-top"><span class="kpi-icon teal"><svg><use href="#i-users"/></svg></span><span class="pill up">▲ 12.4%</span></div>
+            <p class="kpi-label">Patients Today</p>
+            <h3 class="kpi-value" data-count="248">0</h3>
+            <div class="spark" data-spark="18,24,21,33,29,41,38,52,47,61,58,72"></div>
+          </article>
+          <article class="card kpi">
+            <div class="kpi-top"><span class="kpi-icon blue"><svg><use href="#i-clock"/></svg></span><span class="pill up good">▼ 33% faster</span></div>
+            <p class="kpi-label">Avg. Wait Time</p>
+            <h3 class="kpi-value" data-count="12" data-suffix=" min">0</h3>
+            <div class="spark blue" data-spark="34,32,30,28,26,24,22,20,18,16,14,12"></div>
+          </article>
+          <article class="card kpi">
+            <div class="kpi-top"><span class="kpi-icon purple"><svg><use href="#i-bed"/></svg></span><span class="pill good">Target achieved</span></div>
+            <p class="kpi-label">Available Beds</p>
+            <h3 class="kpi-value" data-count="34">0</h3>
+            <div class="spark purple" data-spark="48,46,44,45,42,40,41,38,37,36,35,34"></div>
+          </article>
+          <article class="card kpi">
+            <div class="kpi-top"><span class="kpi-icon violet"><svg><use href="#i-lab"/></svg></span><span class="pill up">▲ 22% faster</span></div>
+            <p class="kpi-label">Lab Results Delivered</p>
+            <h3 class="kpi-value" data-count="184">0</h3>
+            <div class="spark violet" data-spark="14,22,30,38,46,54,62,70,78,86,94,104"></div>
+          </article>
+          <article class="card kpi">
+            <div class="kpi-top"><span class="kpi-icon amber"><svg><use href="#i-trend"/></svg></span><span class="pill up">▲ 6.3%</span></div>
+            <p class="kpi-label">Revenue Today</p>
+            <h3 class="kpi-value" data-prefix="₱" data-count="182400">0</h3>
+            <div class="spark amber" data-spark="30,36,33,42,39,48,45,54,51,60,57,66"></div>
+          </article>
+          <article class="card kpi">
+            <div class="kpi-top"><span class="kpi-icon teal"><svg><use href="#i-shield"/></svg></span><span class="pill good">All stock healthy</span></div>
+            <p class="kpi-label">Inventory Accuracy</p>
+            <h3 class="kpi-value" data-count="99" data-suffix="%">0</h3>
+            <div class="spark" data-spark="84,86,88,90,91,93,94,96,97,98,99,99"></div>
+          </article>
+        </div>
+
+        <div class="chart-grid">
+          <article class="card chart-card wide">
+            <div class="card-head">
+              <div><h2>Patient Visits</h2><p>Outpatient, emergency and admitted patients · this week</p></div>
+              <div class="legend"><span class="lg teal">Outpatient</span><span class="lg blue">Emergency</span></div>
+            </div>
+            <div id="visitsChart" class="chart-box"></div>
+          </article>
+
+          <article class="card chart-card bed-card">
+            <div class="card-head"><div><h2>Bed Occupancy</h2><p>Current capacity</p></div></div>
+            <div class="donut-wrap">
+              <div class="donut" id="bedDonut"><div class="donut-center"><strong>72%</strong><span>Occupied</span></div></div>
+            </div>
+            <ul class="donut-legend">
+              <li><span class="sw teal"></span>Occupied <strong>98</strong></li>
+              <li><span class="sw pale"></span>Available <strong>34</strong></li>
+              <li><span class="sw amber"></span>Reserved <strong>4</strong></li>
+            </ul>
+          </article>
+
+          <article class="card chart-card dept-card">
+            <div class="card-head"><div><h2>Department Load</h2><p>Active patients by department</p></div><span class="pill neutral">Live</span></div>
+            <div id="deptChart" class="bars"></div>
+          </article>
+        </div>
+
+        <div class="bottom-grid">
+          <article class="card table-card">
+            <div class="card-head"><div><h2>Patient Queue</h2><p>Currently processed across departments</p></div><div class="head-tools"><label class="table-search"><svg><use href="#i-search"/></svg><input id="patientSearch" type="search" placeholder="Search patient list..." autocomplete="off"></label><button class="link-btn" data-goto="flow">View all <svg><use href="#i-chevron"/></svg></button></div></div>
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead><tr><th>Patient ID</th><th>Patient</th><th>Department</th><th>Checked in</th><th>Status</th></tr></thead>
+                <tbody id="queueBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card alerts-card">
+            <div class="card-head"><div><h2>Improvements Delivered</h2><p>Concerns from the proposal, now resolved</p></div><span class="pill good">All clear</span></div>
+            <ul class="alert-list">
+              <li><span class="alert-icon teal"><svg><use href="#i-database"/></svg></span><div><strong>Patient information centralized</strong><p>HIS · one shared record per patient</p></div><time>Done</time></li>
+              <li><span class="alert-icon blue"><svg><use href="#i-lab"/></svg></span><div><strong>Lab results delivered instantly</strong><p>LIS · average turnaround 12 minutes</p></div><time>Done</time></li>
+              <li><span class="alert-icon violet"><svg><use href="#i-file"/></svg></span><div><strong>Insurance claims automated</strong><p>Billing · 94% first-pass approval</p></div><time>Done</time></li>
+              <li><span class="alert-icon teal"><svg><use href="#i-pill"/></svg></span><div><strong>Medicine stock optimized</strong><p>Inventory · zero shortages this month</p></div><time>Done</time></li>
+            </ul>
+            <button class="btn soft full" data-goto="reports">Open management reports</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== PATIENT FLOW VIEW ===== -->
+      <section class="view" id="view-flow">
+        <div class="page-head">
+          <div><p class="eyebrow">QUEUE MANAGEMENT SYSTEM</p><h1>Patient Flow</h1><p class="sub">Track each patient from registration through billing.</p></div>
+          <div class="head-actions"><button class="btn ghost" id="flowRefresh"><svg><use href="#i-refresh"/></svg> Refresh board</button><button class="btn primary" id="tokenBtn"><svg><use href="#i-users"/></svg> New queue token</button></div>
+        </div>
+
+        <div class="stat-strip">
+          <div class="strip-item"><span>In queue</span><strong>42</strong><small class="pill neutral">Across 5 stations</small></div>
+          <div class="strip-item"><span>Average wait</span><strong>12 min</strong><small class="pill up good">▼ 33% faster</small></div>
+          <div class="strip-item"><span>Served today</span><strong>206</strong><small class="pill up">▲ 12.4% vs yesterday</small></div>
+          <div class="strip-item"><span>Target achieved</span><strong>100%</strong><small class="pill good">All stations under 20 min</small></div>
+        </div>
+
+        <article class="card board-card">
+          <div class="card-head"><div><h2>Live Queue Board</h2><p>Integrated with the HIS and centralized patient database</p></div><div class="head-tools"><label class="table-search"><svg><use href="#i-search"/></svg><input id="flowSearch" type="search" placeholder="Search patients..." autocomplete="off"></label><span class="pill live-pill"><span class="live-dot"></span> Live</span></div></div>
+          <div class="board">
+            <div class="board-col">
+              <div class="col-head teal"><strong>Registration</strong><span>8</span></div>
+              <div class="patient-chip"><b>#A-1024</b><span>Juan Dela Cruz</span><small>08:12 · 6 min</small></div>
+              <div class="patient-chip"><b>#A-1025</b><span>Maria Santos</span><small>08:15 · 3 min</small></div>
+              <div class="patient-chip"><b>#A-1026</b><span>Pedro Reyes</span><small>08:17 · 1 min</small></div>
+            </div>
+            <div class="board-col">
+              <div class="col-head blue"><strong>Consultation</strong><span>11</span></div>
+              <div class="patient-chip"><b>#A-1018</b><span>Ana Gonzales</span><small>07:52 · 14 min</small></div>
+              <div class="patient-chip"><b>#A-1019</b><span>Luis Ramos</span><small>07:58 · 11 min</small></div>
+              <div class="patient-chip"><b>#A-1020</b><span>Rosa Mendoza</span><small>08:03 · 8 min</small></div>
+            </div>
+            <div class="board-col">
+              <div class="col-head violet"><strong>Laboratory</strong><span>9</span></div>
+              <div class="patient-chip"><b>#A-1012</b><span>Kevin Tan</span><small>07:41 · 16 min</small></div>
+              <div class="patient-chip"><b>#A-1014</b><span>Liza Flores</span><small>07:47 · 12 min</small></div>
+              <div class="patient-chip"><b>#A-1016</b><span>Mark Levy</span><small>07:55 · 9 min</small></div>
+            </div>
+            <div class="board-col">
+              <div class="col-head amber"><strong>Pharmacy</strong><span>7</span></div>
+              <div class="patient-chip"><b>#A-1009</b><span>Nina Castro</span><small>07:36 · 12 min</small></div>
+              <div class="patient-chip"><b>#A-1011</b><span>Sam Aquino</span><small>07:44 · 8 min</small></div>
+              <div class="patient-chip"><b>#A-1013</b><span>Tina Cruz</span><small>07:49 · 4 min</small></div>
+            </div>
+            <div class="board-col">
+              <div class="col-head rose"><strong>Billing</strong><span>7</span></div>
+              <div class="patient-chip"><b>#A-1005</b><span>Omar Villa</span><small>07:28 · 9 min</small></div>
+              <div class="patient-chip"><b>#A-1007</b><span>Lea Torres</span><small>07:33 · 6 min</small></div>
+              <div class="patient-chip"><b>#A-1008</b><span>Jay Mercado</span><small>07:35 · 3 min</small></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card chart-card wait-card">
+          <div class="card-head"><div><h2>Average Waiting Time by Station</h2><p>All stations now under the 20-minute target</p></div><span class="pill good">On target</span></div>
+          <div id="waitChart" class="hbars"></div>
+        </article>
+      </section>
+
+      <section class="view" id="view-systems">
+        <div class="page-head">
+          <div><p class="eyebrow">SECTION 5 · PROPOSED INFORMATION SYSTEMS</p><h1>Information Systems</h1><p class="sub">Seven connected systems that replace separate applications and manual records.</p></div>
+          <button class="btn primary" data-goto="architecture"><svg><use href="#i-flow"/></svg> View architecture</button>
+        </div>
+
+        <div class="systems-grid">
+          <article class="card system-card"><div class="sys-top"><span class="sys-icon teal"><svg><use href="#i-database"/></svg></span><span class="sys-tag">Core</span></div><h3>Hospital Information System</h3><p class="sys-desc">Connects all major departments and centralizes patient and operational information.</p><ul><li>Centralized database</li><li>Departmental integration</li><li>Information sharing</li></ul><p class="sys-fix"><strong>Resolved:</strong> One centralized patient record across every department</p></article>
+          <article class="card system-card"><div class="sys-top"><span class="sys-icon blue"><svg><use href="#i-file"/></svg></span><span class="sys-tag">Clinical</span></div><h3>Electronic Medical Records</h3><p class="sys-desc">Stores medical histories, diagnoses, prescriptions and treatments in one digital record.</p><ul><li>Digital patient records</li><li>Medical history</li><li>Prescriptions &amp; treatment records</li></ul><p class="sys-fix"><strong>Resolved:</strong> Complete, up-to-date digital patient records</p></article>
+          <article class="card system-card"><div class="sys-top"><span class="sys-icon amber"><svg><use href="#i-trend"/></svg></span><span class="sys-tag">Financial</span></div><h3>Billing &amp; Financial Management</h3><p class="sys-desc">Automatically records charges, payments and insurance claims from all services.</p><ul><li>Automated billing</li><li>Payment tracking</li><li>Insurance claim processing</li></ul><p class="sys-fix"><strong>Resolved:</strong> Accurate bills and 94% first-pass claim approval</p></article>
+          <article class="card system-card"><div class="sys-top"><span class="sys-icon violet"><svg><use href="#i-pill"/></svg></span><span class="sys-tag">Supply</span></div><h3>Inventory Management</h3><p class="sys-desc">Monitors medicines and supplies in real time with expiration and reorder controls.</p><ul><li>Stock monitoring</li><li>Expiration tracking</li><li>Reorder alerts</li></ul><p class="sys-fix"><strong>Resolved:</strong> Optimal stock levels with zero shortages or expiry</p></article>
+          <article class="card system-card"><div class="sys-top"><span class="sys-icon purple"><svg><use href="#i-lab"/></svg></span><span class="sys-tag">Diagnostic</span></div><h3>Laboratory Information System</h3><p class="sys-desc">Records lab requests and results, then sends completed reports to authorized staff.</p><ul><li>Laboratory requests</li><li>Test results</li><li>Digital reporting</li></ul><p class="sys-fix"><strong>Resolved:</strong> Instant lab results delivered straight to the EMR</p></article>
+          <article class="card system-card"><div class="sys-top"><span class="sys-icon rose"><svg><use href="#i-clock"/></svg></span><span class="sys-tag">Operations</span></div><h3>Queue Management</h3><p class="sys-desc">Monitors queues, organizes appointments and displays service status to patients.</p><ul><li>Appointment scheduling</li><li>Queue numbers</li><li>Waiting-time monitoring</li></ul><p class="sys-fix"><strong>Resolved:</strong> Average patient wait cut to 12 minutes</p></article>
+          <article class="card system-card"><div class="sys-top"><span class="sys-icon blue"><svg><use href="#i-activity"/></svg></span><span class="sys-tag">Management</span></div><h3>Management Information System</h3><p class="sys-desc">Generates reports and dashboards for revenue, admissions, beds and department activity.</p><ul><li>Management dashboards</li><li>Financial reports</li><li>Operational analytics</li></ul><p class="sys-fix"><strong>Resolved:</strong> Real-time dashboards for faster management decisions</p></article>
+          <article class="card system-card highlight-card"><div class="sys-top"><span class="sys-icon teal"><svg><use href="#i-shield"/></svg></span><span class="sys-tag">Recommendation</span></div><h3>Invest in integration</h3><p class="sys-desc">The proposal recommends one integrated HIS over separate department applications — creating a more connected, efficient, accurate and reliable organization.</p><button class="btn soft full" data-goto="architecture">Explore the diagrams <svg><use href="#i-chevron"/></svg></button></article>
+        </div>
+      </section>
+
+      <section class="view" id="view-architecture">
+        <div class="page-head">
+          <div><p class="eyebrow">SECTION 6 · SYSTEM ARCHITECTURE &amp; INTEGRATION</p><h1>Architecture Diagram</h1><p class="sub">Diagrams generated directly from the PrimeCare Information Systems Proposal.</p></div>
+          <button class="btn ghost" id="openDiagram"><svg><use href="#i-download"/></svg> Open full-size diagram</button>
+        </div>
+
+        <article class="card diagram-card">
+          <div class="diagram-tabs" role="tablist" aria-label="Diagram selector">
+            <button class="diagram-tab active" data-diagram="architecture" role="tab" aria-selected="true"><svg><use href="#i-layers"/></svg> Layered Architecture</button>
+            <button class="diagram-tab" data-diagram="flow" role="tab" aria-selected="false"><svg><use href="#i-flow"/></svg> Information Exchange</button>
+            <button class="diagram-tab" data-diagram="org" role="tab" aria-selected="false"><svg><use href="#i-users"/></svg> Organizational Structure</button>
+          </div>
+          <div class="diagram-stage">
+            <img id="diagramImage" src="assets/primecare-architecture.svg" alt="PrimeCare layered Hospital Information System architecture diagram">
+          </div>
+          <div class="diagram-caption">
+            <div><strong id="diagramTitle">Four-layer integrated HIS architecture</strong><p id="diagramText">User access, HIS applications, centralized data, and security &amp; protection — all connected through a secure hospital network.</p></div>
+            <span class="source-badge"><svg><use href="#i-file"/></svg> Source: Proposal §6.1</span>
+          </div>
+        </article>
+
+        <div class="architecture-grid">
+          <article class="card table-card">
+            <div class="card-head"><div><h2>Data Collected, Processed &amp; Stored</h2><p>Section 6.3</p></div></div>
+            <div class="table-scroll">
+              <table class="data-table compact">
+                <thead><tr><th>Category</th><th>Information</th><th>Storage</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Patient</strong></td><td>Name, age, address, contact, patient ID</td><td>Centralized patient DB</td></tr>
+                  <tr><td><strong>Medical</strong></td><td>History, diagnosis, prescriptions</td><td>EMR database</td></tr>
+                  <tr><td><strong>Laboratory</strong></td><td>Test requests and results</td><td>Lab DB (HIS-integrated)</td></tr>
+                  <tr><td><strong>Financial</strong></td><td>Charges, payments, insurance claims</td><td>Financial database</td></tr>
+                  <tr><td><strong>Inventory</strong></td><td>Quantities, supplies, expiration dates</td><td>Inventory database</td></tr>
+                  <tr><td><strong>Operational</strong></td><td>Admissions, beds, daily revenue</td><td>Management database</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card table-card">
+            <div class="card-head"><div><h2>Role-Based Access Control</h2><p>Section 6.4 · RBAC</p></div><span class="pill good">Secure</span></div>
+            <div class="table-scroll">
+              <table class="data-table compact">
+                <thead><tr><th>User</th><th>Authorized access</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Doctors</strong></td><td>Histories, diagnoses, results, prescriptions</td></tr>
+                  <tr><td><strong>Nurses</strong></td><td>Patient info, treatment and nursing records</td></tr>
+                  <tr><td><strong>Lab Staff</strong></td><td>Requests, test information and results</td></tr>
+                  <tr><td><strong>Pharmacists</strong></td><td>Prescriptions, medicines and inventory</td></tr>
+                  <tr><td><strong>Billing Staff</strong></td><td>Billing, payments and insurance details</td></tr>
+                  <tr><td><strong>Administrators</strong></td><td>Reports, financial summaries, performance</td></tr>
+                  <tr><td><strong>IT Personnel</strong></td><td>Maintenance and security monitoring</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== REPORTS VIEW ===== -->
+      <section class="view" id="view-reports">
+        <div class="page-head">
+          <div><p class="eyebrow">SECTION 7 · IMPLEMENTATION &amp; RISK</p><h1>Reports &amp; Plans</h1><p class="sub">Financial reporting, implementation phases and risk mitigation.</p></div>
+          <button class="btn primary" id="exportPlan"><svg><use href="#i-download"/></svg> Export plan (CSV)</button>
+        </div>
+
+        <div class="stat-strip four">
+          <div class="strip-item"><span>Revenue this month</span><strong>₱2.48M</strong><small class="pill up">▲ 9.2% vs last month</small></div>
+          <div class="strip-item"><span>Claims processed</span><strong>318</strong><small class="pill up good">94% approved</small></div>
+          <div class="strip-item"><span>Revenue per visit</span><strong>₱2,140</strong><small class="pill neutral">Target ₱2,000</small></div>
+          <div class="strip-item"><span>Report accuracy</span><strong>99.2%</strong><small class="pill up">Automated consolidation</small></div>
+        </div>
+
+        <article class="card chart-card">
+          <div class="card-head"><div><h2>Monthly Revenue</h2><p>Generated by the Billing and MIS modules</p></div><span class="pill neutral">₱ thousands</span></div>
+          <div id="revenueChart" class="chart-box"></div>
+        </article>
+
+        <div class="architecture-grid">
+          <article class="card table-card">
+            <div class="card-head"><div><h2>Implementation Phases</h2><p>Section 7.1 · Seven-phase rollout</p></div></div>
+            <ol class="timeline">
+              <li><span>1</span><div><strong>Planning</strong><p>Requirements, budget and system specifications</p></div></li>
+              <li><span>2</span><div><strong>Development / Acquisition</strong><p>Select and configure the integrated HIS</p></div></li>
+              <li><span>3</span><div><strong>Data Migration</strong><p>Transfer patient, billing, lab and inventory records</p></div></li>
+              <li><span>4</span><div><strong>Employee Training</strong><p>Prepare doctors, nurses and administrative staff</p></div></li>
+              <li><span>5</span><div><strong>Testing</strong><p>Functionality, security, integration and accuracy</p></div></li>
+              <li><span>6</span><div><strong>Deployment</strong><p>Roll out department by department</p></div></li>
+              <li><span>7</span><div><strong>Monitoring</strong><p>Evaluate performance and resolve issues</p></div></li>
+            </ol>
+          </article>
+
+          <article class="card table-card">
+            <div class="card-head"><div><h2>Concerns Resolved</h2><p>Section 7.2 · All mitigation measures implemented</p></div><span class="pill good">All clear</span></div>
+            <div class="table-scroll">
+              <table class="data-table compact">
+                <thead><tr><th>Former concern</th><th>Outcome today</th><th>Solution delivered</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Employee resistance</strong></td><td><span class="pill good">Full adoption</span></td><td>Training and technical support completed</td></tr>
+                  <tr><td><strong>Data breaches</strong></td><td><span class="pill good">Zero incidents</span></td><td>Encryption, authentication and restrictions active</td></tr>
+                  <tr><td><strong>Migration errors</strong></td><td><span class="pill good">100% integrity</span></td><td>Records validated and backed up before migration</td></tr>
+                  <tr><td><strong>System downtime</strong></td><td><span class="pill good">99.9% uptime</span></td><td>Backup systems and recovery procedures in place</td></tr>
+                  <tr><td><strong>High costs</strong></td><td><span class="pill good">On budget</span></td><td>Phased rollout prioritized essential functions</td></tr>
+                  <tr><td><strong>Technical issues</strong></td><td><span class="pill good">Resolved</span></td><td>Qualified IT staff and ongoing maintenance</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== SETTINGS VIEW ===== -->
+      <section class="view" id="view-settings">
+        <div class="page-head">
+          <div><p class="eyebrow">SECTION 6.4 · SECURITY &amp; PRIVACY</p><h1>Settings</h1><p class="sub">Access control, privacy compliance and dashboard preferences.</p></div>
+        </div>
+
+        <article class="card profile-summary">
+          <div class="avatar lg">MA</div>
+          <div class="profile-summary-text"><h2>Maria Alvarez</h2><p>Hospital Administrator · PrimeCare Medical Center</p><span class="pill good">Active account</span></div>
+          <button class="btn primary" data-goto="profile"><svg><use href="#i-users"/></svg> Open account profile</button>
+        </article>
+
+        <div class="architecture-grid">
+          <article class="card">
+            <div class="card-head"><div><h2>Security Checklist</h2><p>Measures recommended in the proposal</p></div><span class="pill good">RA 10173</span></div>
+            <ul class="checklist">
+              <li><span class="check-icon"><svg><use href="#i-check"/></svg></span>Individual usernames and strong passwords</li>
+              <li><span class="check-icon"><svg><use href="#i-check"/></svg></span>Role-based access permissions (RBAC)</li>
+              <li><span class="check-icon"><svg><use href="#i-check"/></svg></span>Encryption of confidential patient information</li>
+              <li><span class="check-icon"><svg><use href="#i-check"/></svg></span>Regular database backups</li>
+              <li><span class="check-icon"><svg><use href="#i-check"/></svg></span>Audit logs of system activities</li>
+              <li><span class="check-icon"><svg><use href="#i-check"/></svg></span>Employee training on data privacy</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-head"><div><h2>Dashboard Preferences</h2><p>These settings affect only this demo dashboard</p></div></div>
+            <ul class="toggle-list">
+              <li><div><strong>Live queue updates</strong><p>Refresh queue data automatically</p></div><label class="switch"><input type="checkbox" checked><span></span></label></li>
+              <li><div><strong>Inventory alerts</strong><p>Show low-stock and expiration warnings</p></div><label class="switch"><input type="checkbox" checked><span></span></label></li>
+              <li><div><strong>Compact tables</strong><p>Fit more records on screen</p></div><label class="switch"><input type="checkbox"><span></span></label></li>
+              <li><div><strong>Email digest</strong><p>Daily summary for hospital management</p></div><label class="switch"><input type="checkbox" checked><span></span></label></li>
+            </ul>
+            <button class="btn primary full" id="savePrefs">Save preferences</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===== PROFILE VIEW ===== -->
+      <section class="view" id="view-profile">
+        <div class="page-head">
+          <div><p class="eyebrow">ACCOUNT · HOSPITAL ADMINISTRATOR</p><h1>Account Profile</h1><p class="sub">Manage your personal details, access level and account security.</p></div>
+          <button class="btn ghost" data-goto="settings"><svg><use href="#i-settings"/></svg> Back to settings</button>
+        </div>
+
+        <div class="profile-layout">
+          <article class="card profile-hero">
+            <div class="profile-cover"></div>
+            <div class="profile-hero-body">
+              <div class="avatar xl">MA</div>
+              <h2>Maria Alvarez</h2>
+              <p class="profile-role">Hospital Administrator</p>
+              <div class="profile-badges"><span class="pill good">Active account</span><span class="pill neutral">Full RBAC access</span><span class="pill up">RA 10173 compliant</span></div>
+              <ul class="profile-meta">
+                <li><svg><use href="#i-file"/></svg><div><span>Employee ID</span><strong>PC-ADM-0042</strong></div></li>
+                <li><svg><use href="#i-users"/></svg><div><span>Department</span><strong>Administration / Patient Services</strong></div></li>
+                <li><svg><use href="#i-calendar"/></svg><div><span>Member since</span><strong>January 2019</strong></div></li>
+                <li><svg><use href="#i-lock"/></svg><div><span>Last sign-in</span><strong>Today, 08:04</strong></div></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card profile-form">
+            <div class="card-head"><div><h2>Personal Information</h2><p>Update your contact details</p></div></div>
+            <form id="profileForm" onsubmit="return false">
+              <div class="form-grid">
+                <label class="field"><span>Full name</span><input type="text" value="Maria Alvarez"></label>
+                <label class="field"><span>Email address</span><input type="email" value="maria.alvarez@primecare.ph"></label>
+                <label class="field"><span>Phone number</span><input type="tel" value="+63 917 555 0142"></label>
+                <div class="field"><span>Department</span><div class="read-only">Administration / Patient Services</div></div>
+                <div class="field"><span>Account role</span><div class="read-only">Hospital Administrator</div></div>
+              </div>
+              <label class="field full-field"><span>Short bio</span><textarea rows="3">Oversees hospital operations, department coordination and management reporting through the integrated Hospital Information System.</textarea></label>
+              <div class="form-actions"><button class="btn primary" id="saveProfile" type="submit">Save changes</button><button class="btn ghost" type="reset">Discard</button></div>
+            </form>
+          </article>
+
+          <article class="card">
+            <div class="card-head"><div><h2>Account Security</h2><p>Security controls for your account</p></div><span class="pill good">Protected</span></div>
+            <ul class="security-list">
+              <li><span class="alert-icon teal"><svg><use href="#i-lock"/></svg></span><div><strong>Password</strong><p>Last changed 42 days ago</p></div><button class="btn ghost small">Change</button></li>
+              <li><span class="alert-icon blue"><svg><use href="#i-shield"/></svg></span><div><strong>Two-factor authentication</strong><p>Enabled · authenticator app</p></div><span class="pill good">On</span></li>
+              <li><span class="alert-icon amber"><svg><use href="#i-clock"/></svg></span><div><strong>Active session</strong><p>This browser · Laguna, Philippines</p></div><span class="pill neutral">Current</span></li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-head"><div><h2>Recent Activity</h2><p>Your latest actions in the dashboard</p></div></div>
+            <ul class="activity-list">
+              <li><span class="live-dot"></span><div><strong>Exported the patient queue</strong><p>Today · 09:24</p></div></li>
+              <li><span class="live-dot"></span><div><strong>Reviewed implementation risks</strong><p>Yesterday · 16:08</p></div></li>
+              <li><span class="live-dot"></span><div><strong>Updated security checklist</strong><p>November 14 · 10:41</p></div></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg><use href="#i-check"/></svg><span id="toastText">Done</span></div>
+
+<script src="app.js"></script>
+</body>
+</html>

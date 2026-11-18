@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+  <title id="title">PrimeCare Organizational Structure</title>
+  <desc id="desc">Organizational chart from Section 1.2: the Hospital Administrator oversees eight departments.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eafaf7"/><stop offset="1" stop-color="#edf0ff"/></linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d9488"/><stop offset=".55" stop-color="#2563eb"/><stop offset="1" stop-color="#9333ea"/></linearGradient>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset=".5" stop-color="#0d9488"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
+    <linearGradient id="conn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+    <linearGradient id="b1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d9fbf2"/></linearGradient>
+    <linearGradient id="b2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfeaff"/></linearGradient>
+    <linearGradient id="b3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ebe2ff"/></linearGradient>
+    <linearGradient id="b4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dcf7e6"/></linearGradient>
+    <linearGradient id="b5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#fff1d6"/></linearGradient>
+    <linearGradient id="b6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ffe1ee"/></linearGradient>
+    <linearGradient id="b7" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6ecf5"/></linearGradient>
+    <linearGradient id="b8" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d9f5f8"/></linearGradient>
+    <linearGradient id="foot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d8f7e8"/><stop offset="1" stop-color="#e4ecff"/></linearGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#4f46e5" flood-opacity="0.12"/></filter>
+  </defs>
+
+  <rect width="1200" height="660" rx="22" fill="url(#page)"/>
+
+  <g font-family="'Segoe UI', Arial, sans-serif">
+    <rect x="40" y="26" width="222" height="26" rx="13" fill="#0d9488"/>
+    <text x="151" y="44" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1.2" fill="#ffffff">ORGANIZATIONAL STRUCTURE</text>
+    <text x="40" y="84" font-size="26" font-weight="800" fill="url(#titleGrad)">PrimeCare Medical Center</text>
+    <text x="40" y="104" font-size="13" fill="#475569">Section 1.2 — The Hospital Administrator oversees eight departments.</text>
+
+    <g stroke="url(#conn)" stroke-width="2.5" fill="none">
+      <path d="M600 182 L600 220"/>
+      <path d="M135 220 H1065"/>
+      <path d="M240 220 V250 M480 220 V250 M720 220 V250 M960 220 V250"/>
+      <path d="M600 220 V420"/>
+      <path d="M135 420 H1065"/>
+      <path d="M240 420 V450 M480 420 V450 M720 420 V450 M960 420 V450"/>
+    </g>
+
+    <g filter="url(#soft)"><rect x="465" y="112" width="270" height="70" rx="16" fill="url(#top)"/></g>
+    <text x="600" y="143" text-anchor="middle" font-size="16" font-weight="800" fill="#ffffff">HOSPITAL ADMINISTRATOR</text>
+    <text x="600" y="164" text-anchor="middle" font-size="11" fill="#e0f2fe">Overall hospital operations</text>
+
+    <g filter="url(#soft)">
+      <rect x="135" y="250" width="210" height="90" rx="14" fill="url(#b1)" stroke="#5eead4"/>
+      <rect x="135" y="250" width="210" height="5" rx="2.5" fill="#0d9488"/>
+      <rect x="375" y="250" width="210" height="90" rx="14" fill="url(#b2)" stroke="#93c5fd"/>
+      <rect x="375" y="250" width="210" height="5" rx="2.5" fill="#2563eb"/>
+      <rect x="615" y="250" width="210" height="90" rx="14" fill="url(#b3)" stroke="#c4b5fd"/>
+      <rect x="615" y="250" width="210" height="5" rx="2.5" fill="#7c3aed"/>
+      <rect x="855" y="250" width="210" height="90" rx="14" fill="url(#b4)" stroke="#6ee7b7"/>
+      <rect x="855" y="250" width="210" height="5" rx="2.5" fill="#059669"/>
+    </g>
+    <g font-size="14" font-weight="800">
+      <text x="153" y="288" fill="#0f766e">Medical Department</text>
+      <text x="393" y="288" fill="#1d4ed8">Nursing Department</text>
+      <text x="633" y="288" fill="#6d28d9">Laboratory &amp; Imaging</text>
+      <text x="873" y="288" fill="#047857">Pharmacy Department</text>
+    </g>
+    <g font-size="11" fill="#475569">
+      <text x="153" y="313">Consultations · Diagnosis</text>
+      <text x="393" y="313">Patient care · Monitoring</text>
+      <text x="633" y="313">Tests · X-rays · Diagnostics</text>
+      <text x="873" y="313">Dispensing · Inventory</text>
+    </g>
+
+    <g filter="url(#soft)">
+      <rect x="135" y="450" width="210" height="90" rx="14" fill="url(#b5)" stroke="#fcd34d"/>
+      <rect x="135" y="450" width="210" height="5" rx="2.5" fill="#d97706"/>
+      <rect x="375" y="450" width="210" height="90" rx="14" fill="url(#b6)" stroke="#f9a8d4"/>
+      <rect x="375" y="450" width="210" height="5" rx="2.5" fill="#db2777"/>
+      <rect x="615" y="450" width="210" height="90" rx="14" fill="url(#b7)" stroke="#cbd5e1"/>
+      <rect x="615" y="450" width="210" height="5" rx="2.5" fill="#475569"/>
+      <rect x="855" y="450" width="210" height="90" rx="14" fill="url(#b8)" stroke="#67e8f9"/>
+      <rect x="855" y="450" width="210" height="5" rx="2.5" fill="#0891b2"/>
+    </g>
+    <g font-size="14" font-weight="800">
+      <text x="153" y="488" fill="#b45309">Finance &amp; Billing</text>
+      <text x="393" y="488" fill="#be185d">Human Resources</text>
+      <text x="633" y="488" fill="#334155">IT Department</text>
+      <text x="873" y="488" fill="#0e7490">Patient Services</text>
+    </g>
+    <g font-size="11" fill="#475569">
+      <text x="153" y="513">Payments · Insurance claims</text>
+      <text x="393" y="513">Records · Payroll</text>
+      <text x="633" y="513">Systems · Networks · Security</text>
+      <text x="873" y="513">Registration · Appointments</text>
+    </g>
+
+    <rect x="40" y="585" width="1120" height="40" rx="12" fill="url(#foot)" stroke="#a7f3d0"/>
+    <text x="600" y="610" text-anchor="middle" font-size="11.5" font-weight="600" fill="#334155">Cross-department coordination is delivered by the integrated Hospital Information System described in Sections 5 and 6.</text>
+  </g>
+</svg>

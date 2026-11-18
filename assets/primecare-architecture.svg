@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">PrimeCare Integrated HIS Architecture</title>
+  <desc id="desc">Layered architecture based on Section 6.1: user access, integrated HIS applications, centralized data, and security and protection.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eafaf7"/><stop offset="1" stop-color="#edf1ff"/></linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d9488"/><stop offset=".55" stop-color="#2563eb"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="pillGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d9488"/><stop offset="1" stop-color="#0284c7"/></linearGradient>
+    <linearGradient id="l1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e4fbf5"/></linearGradient>
+    <linearGradient id="l2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eeecff"/></linearGradient>
+    <linearGradient id="l3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6f4ff"/></linearGradient>
+    <linearGradient id="l4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#fff2e4"/></linearGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9fbf2"/><stop offset="1" stop-color="#a7f3d0"/></linearGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ebe9ff"/><stop offset="1" stop-color="#c7d2fe"/></linearGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dff2ff"/><stop offset="1" stop-color="#bae6fd"/></linearGradient>
+    <linearGradient id="c4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1dc"/><stop offset="1" stop-color="#fed7aa"/></linearGradient>
+    <linearGradient id="conn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#6366f1"/></linearGradient>
+    <linearGradient id="foot" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9f7f0"/><stop offset="1" stop-color="#e8e9ff"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M1,1 L9,5 L1,9 Z" fill="#6366f1"/></marker>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#4f46e5" flood-opacity="0.10"/></filter>
+  </defs>
+
+  <rect width="1200" height="820" rx="22" fill="url(#page)"/>
+
+  <g font-family="'Segoe UI', Arial, sans-serif">
+    <rect x="40" y="30" width="286" height="26" rx="13" fill="url(#pillGrad)"/>
+    <text x="183" y="48" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1.2" fill="#ffffff">PROPOSED SYSTEM ARCHITECTURE</text>
+    <text x="40" y="88" font-size="27" font-weight="800" fill="url(#titleGrad)">PrimeCare Integrated Hospital Information System</text>
+    <text x="40" y="108" font-size="13" fill="#475569">Section 6.1 — All departments connect to one shared database through a secure hospital network.</text>
+
+    <!-- Layer 1 : User Access -->
+    <g filter="url(#soft)"><rect x="40" y="122" width="1120" height="126" rx="18" fill="url(#l1)" stroke="#7dd3c6"/></g>
+    <rect x="62" y="140" width="196" height="34" rx="17" fill="#0d9488"/>
+    <text x="160" y="162" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">USER ACCESS LAYER</text>
+    <text x="64" y="200" font-size="12" fill="#0f766e">Who uses the system</text>
+    <text x="64" y="220" font-size="11" fill="#64748b">Role-based permissions</text>
+    <g font-size="13" font-weight="700" fill="#115e59" text-anchor="middle">
+      <g fill="url(#c1)" stroke="#5eead4">
+        <rect x="292" y="150" width="110" height="48" rx="11"/><rect x="414" y="150" width="110" height="48" rx="11"/>
+        <rect x="536" y="150" width="110" height="48" rx="11"/><rect x="658" y="150" width="110" height="48" rx="11"/>
+        <rect x="780" y="150" width="110" height="48" rx="11"/><rect x="902" y="150" width="110" height="48" rx="11"/>
+        <rect x="1024" y="150" width="110" height="48" rx="11"/>
+      </g>
+      <text x="347" y="179">Doctors</text><text x="469" y="179">Nurses</text>
+      <text x="591" y="179">Cashiers</text><text x="713" y="179">Pharmacists</text>
+      <text x="835" y="179">Lab Staff</text><text x="957" y="179">Administrators</text>
+      <text x="1079" y="179">IT Personnel</text>
+    </g>
+
+    <!-- Layer 2 : HIS Application -->
+    <g filter="url(#soft)"><rect x="40" y="278" width="1120" height="168" rx="18" fill="url(#l2)" stroke="#a5b4fc"/></g>
+    <rect x="62" y="296" width="196" height="34" rx="17" fill="#4f46e5"/>
+    <text x="160" y="318" text-anchor="middle" font-size="12.5" font-weight="700" fill="#ffffff">HIS APPLICATION LAYER</text>
+    <text x="64" y="356" font-size="12" fill="#4338ca">Seven integrated</text>
+    <text x="64" y="374" font-size="12" fill="#4338ca">applications</text>
+    <text x="64" y="404" font-size="11" fill="#64748b">One HIS platform</text>
+    <g font-size="12" font-weight="700" fill="#3730a3" text-anchor="middle">
+      <g fill="url(#c2)" stroke="#a5b4fc">
+        <rect x="292" y="300" width="110" height="72" rx="11"/><rect x="414" y="300" width="110" height="72" rx="11"/>
+        <rect x="536" y="300" width="110" height="72" rx="11"/><rect x="658" y="300" width="110" height="72" rx="11"/>
+        <rect x="780" y="300" width="110" height="72" rx="11"/><rect x="902" y="300" width="110" height="72" rx="11"/>
+        <rect x="1024" y="300" width="110" height="72" rx="11"/>
+      </g>
+      <text x="347" y="329">Patient</text><text x="347" y="346">Registration</text>
+      <text x="469" y="329">Electronic</text><text x="469" y="346">Medical Records</text>
+      <text x="591" y="329">Billing &amp;</text><text x="591" y="346">Finance</text>
+      <text x="713" y="329">Laboratory</text><text x="713" y="346">(LIS)</text>
+      <text x="835" y="329">Inventory</text><text x="835" y="346">Management</text>
+      <text x="957" y="329">Queue</text><text x="957" y="346">Management</text>
+      <text x="1079" y="329">Management</text><text x="1079" y="346">Information (MIS)</text>
+    </g>
+
+    <!-- Layer 3 : Data -->
+    <g filter="url(#soft)"><rect x="40" y="476" width="1120" height="132" rx="18" fill="url(#l3)" stroke="#7dd3fc"/></g>
+    <rect x="62" y="494" width="196" height="34" rx="17" fill="#0284c7"/>
+    <text x="160" y="516" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">DATA LAYER</text>
+    <text x="64" y="552" font-size="12" fill="#0369a1">Centralized hospital</text>
+    <text x="64" y="570" font-size="12" fill="#0369a1">database</text>
+    <g font-size="12.5" font-weight="700" fill="#075985" text-anchor="middle">
+      <g fill="url(#c3)" stroke="#7dd3fc">
+        <rect x="292" y="504" width="132" height="52" rx="11"/><rect x="436" y="504" width="132" height="52" rx="11"/>
+        <rect x="580" y="504" width="132" height="52" rx="11"/><rect x="724" y="504" width="132" height="52" rx="11"/>
+        <rect x="868" y="504" width="132" height="52" rx="11"/><rect x="1012" y="504" width="132" height="52" rx="11"/>
+      </g>
+      <text x="358" y="535">Patient Records</text><text x="502" y="535">Medical Histories</text>
+      <text x="646" y="535">Laboratory Results</text><text x="790" y="535">Billing &amp; Claims</text>
+      <text x="934" y="535">Inventory</text><text x="1078" y="535">Operational Reports</text>
+    </g>
+
+    <!-- Layer 4 : Security -->
+    <g filter="url(#soft)"><rect x="40" y="638" width="1120" height="124" rx="18" fill="url(#l4)" stroke="#fdba74"/></g>
+    <rect x="62" y="656" width="196" height="34" rx="17" fill="#ea580c"/>
+    <text x="160" y="678" text-anchor="middle" font-size="11.5" font-weight="700" fill="#ffffff">SECURITY &amp; PROTECTION LAYER</text>
+    <text x="64" y="714" font-size="12" fill="#c2410c">Protects every</text>
+    <text x="64" y="732" font-size="12" fill="#c2410c">information exchange</text>
+    <g font-size="12.5" font-weight="700" fill="#9a3412" text-anchor="middle">
+      <g fill="url(#c4)" stroke="#fdba74">
+        <rect x="292" y="666" width="158" height="52" rx="11"/><rect x="462" y="666" width="158" height="52" rx="11"/>
+        <rect x="632" y="666" width="158" height="52" rx="11"/><rect x="802" y="666" width="158" height="52" rx="11"/>
+        <rect x="972" y="666" width="158" height="52" rx="11"/>
+      </g>
+      <text x="371" y="697">Authentication</text><text x="541" y="697">Access Permissions</text>
+      <text x="711" y="697">Encryption</text><text x="881" y="697">Backups &amp; Recovery</text>
+      <text x="1051" y="697">Audit Logs</text>
+    </g>
+
+    <!-- Layer connectors drawn on top so every arrowhead stays visible -->
+    <g stroke="url(#conn)" stroke-width="2.5" fill="none">
+      <line x1="600" y1="248" x2="600" y2="278" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+      <line x1="600" y1="446" x2="600" y2="476" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+      <line x1="600" y1="608" x2="600" y2="638" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+    </g>
+
+    <rect x="40" y="782" width="1120" height="26" rx="13" fill="url(#foot)"/>
+    <text x="600" y="800" text-anchor="middle" font-size="11" font-weight="600" fill="#334155">Role-Based Access Control (RBAC) · Encryption · Regular backups · Audit logs · Philippine Data Privacy Act of 2012 (RA 10173)</text>
+  </g>
+</svg>
